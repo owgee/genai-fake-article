@@ -1,4 +1,3 @@
-
 # GenAI Fake Article Generator
 
 ## Project Overview
@@ -10,24 +9,28 @@ The **GenAI Fake Article Generator** is a tool that leverages generative AI mode
 - **Generate Research Titles**: The tool generates plausible research paper titles based on a given topic or keyword.
 - **Generate Abstracts**: For each generated title, the tool creates a corresponding abstract that mimics the style and structure of real academic papers.
 - **Customizable Models**: The project uses pre-trained models from the Hugging Face Transformers library, which can be fine-tuned for more specific outputs.
+- **Full Paper Generation**: Allows for the generation of full research papers with sections like Introduction, Methodology, Results, and Conclusion, saved as a `.docx` file.
 
 ## Getting Started
 
 ### Prerequisites
 
 - Python 3.x
+- Jupyter Notebook or Jupyter Lab
 - Virtual environment (optional but recommended)
 - Git
 
 ### Installation
 
 1. **Clone the Repository**:
+
    ```bash
    git clone https://github.com/owgee/genai-fake-article.git
    cd genai-fake-article
    ```
 
 2. **Set Up the Virtual Environment**:
+
    ```bash
    python3 -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
@@ -44,7 +47,7 @@ The **GenAI Fake Article Generator** is a tool that leverages generative AI mode
 genai-fake-article/
 ├── data/                  # Directory for storing raw data (e.g., collected research papers)
 ├── models/                # Directory for storing trained models
-├── scripts/               # Python scripts for data processing and model training
+├── scripts/               # Jupyter Notebooks for data processing and model training
 ├── outputs/               # Generated titles and abstracts will be saved here
 ├── .gitignore             # Ignore unnecessary files and directories
 ├── README.md              # Project documentation
@@ -54,30 +57,24 @@ genai-fake-article/
 ### Usage
 
 1. **Collect Data**:
-   - Use the scripts in the `scripts/` directory to gather and preprocess data from sources like arXiv or PubMed.
+
+   - Use the Jupyter Notebook in the `scripts/` directory to gather and preprocess data from sources like arXiv or PubMed.
 
 2. **Generate Fake Articles**:
-   - Run the main script to generate a fake research title and corresponding abstract:
-   ```bash
-   python scripts/generate_fake_article.py
-   ```
 
-3. **Evaluate Outputs**:
-   - Review the generated outputs stored in the `outputs/` directory.
+   - Run the provided Jupyter Notebook to generate a fake research title and corresponding abstract.
+
+3. **Generate Full Research Paper**:
+   - Use the notebook to generate full research papers with custom sections and save the result as a `.docx` file:
+   - Example sections include 'Introduction', 'Methodology', 'Results', 'Discussion', 'Conclusion'.
 
 ### Example
 
-Here’s a quick example of how to generate a fake research paper:
+Here’s a quick example of how to generate a fake research paper in the notebook:
 
-```python
-from transformers import pipeline
-
-generator = pipeline('text-generation', model='gpt-2')
-
-title = "Innovative Approaches in Machine Learning"
-abstract = generator(f"Title: {title}\nAbstract:", max_length=200)[0]['generated_text']
-print(abstract)
-```
+1. Load titles and abstracts from your dataset.
+2. Generate each section of the paper using GPT-2.
+3. Save the generated paper as a `.docx` file.
 
 ### Ethical Considerations
 
